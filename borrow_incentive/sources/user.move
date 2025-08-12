@@ -21,6 +21,7 @@ module borrow_incentive::user {
     use protocol::obligation_access::ObligationAccessStore;
 
     use ve_sca::ve_sca::{Self, VeScaKey, VeScaTable};
+    use ve_sca::ve_sca_subscriber::{Self, VeScaSubscriberTable, VeScaSubscriberWhitelist};
     use ve_sca::config::VeScaProtocolConfig;
     use ve_sca::treasury::{Self as ve_sca_treasury, VeScaTreasury};
 
@@ -94,6 +95,25 @@ module borrow_incentive::user {
         abort 0
     }
 
+    public entry fun stake_with_ve_sca_v2(
+        incentive_config: &IncentiveConfig,
+        incentive_pools: &mut IncentivePools,
+        incentive_accounts: &mut IncentiveAccounts,
+        obligation_key: &ObligationKey,
+        obligation: &mut Obligation,
+        obligation_access_store: &ObligationAccessStore,
+        ve_sca_config: &VeScaProtocolConfig,
+        ve_sca_treasury: &mut VeScaTreasury,
+        ve_sca_table: &VeScaTable,        
+        ve_sca_key: &VeScaKey,
+        ve_sca_subs_table: &mut VeScaSubscriberTable,
+        ve_sca_subs_whitelist: &VeScaSubscriberWhitelist,
+        clock: &Clock,
+        ctx: &mut TxContext,
+    ) {
+        abort 0
+    }
+
     public entry fun stake(
         incentive_config: &IncentiveConfig,
         incentive_pools: &mut IncentivePools,
@@ -119,6 +139,20 @@ module borrow_incentive::user {
         abort 0
     }
 
+    public entry fun unstake_v2(
+        incentive_config: &IncentiveConfig,
+        incentive_pools: &mut IncentivePools,
+        incentive_accounts: &mut IncentiveAccounts,
+        obligation_key: &ObligationKey,
+        obligation: &mut Obligation,
+        ve_sca_subs_table: &mut VeScaSubscriberTable,
+        ve_sca_subs_whitelist: &VeScaSubscriberWhitelist,
+        clock: &Clock,
+        ctx: &mut TxContext,
+    ) {
+        abort 0
+    }
+
     public entry fun force_unstake_unhealthy(
         incentive_config: &IncentiveConfig,
         incentive_pools: &mut IncentivePools,
@@ -127,6 +161,22 @@ module borrow_incentive::user {
         market: &mut Market,
         coin_decimals_registry: &CoinDecimalsRegistry,
         x_oracle: &XOracle,
+        clock: &Clock,
+        ctx: &mut TxContext,
+    ) {
+        abort 0
+    }
+
+    public entry fun force_unstake_unhealthy_v2(
+        incentive_config: &IncentiveConfig,
+        incentive_pools: &mut IncentivePools,
+        incentive_accounts: &mut IncentiveAccounts,
+        obligation: &mut Obligation,
+        market: &mut Market,
+        coin_decimals_registry: &CoinDecimalsRegistry,
+        x_oracle: &XOracle,
+        ve_sca_subs_table: &mut VeScaSubscriberTable,
+        ve_sca_subs_whitelist: &VeScaSubscriberWhitelist,
         clock: &Clock,
         ctx: &mut TxContext,
     ) {
@@ -153,6 +203,20 @@ module borrow_incentive::user {
         incentive_accounts: &mut IncentiveAccounts,
         obligation: &Obligation,
         ve_sca_key: &VeScaKey,
+        clock: &Clock,
+        ctx: &mut TxContext,
+    ) {
+        abort 0
+    }
+
+    public fun deactivate_boost_v2(
+        incentive_config: &IncentiveConfig,
+        incentive_pools: &mut IncentivePools,
+        incentive_accounts: &mut IncentiveAccounts,
+        obligation: &Obligation,
+        ve_sca_key: &VeScaKey,
+        ve_sca_subs_table: &mut VeScaSubscriberTable,
+        ve_sca_subs_whitelist: &VeScaSubscriberWhitelist,
         clock: &Clock,
         ctx: &mut TxContext,
     ) {
