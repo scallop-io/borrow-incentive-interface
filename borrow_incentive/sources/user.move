@@ -17,6 +17,7 @@ module borrow_incentive::user {
     use borrow_incentive::incentive_config::{Self, IncentiveConfig};
 
     use protocol::market::Market;
+    use protocol::version::Version;
     use protocol::obligation::{Self, Obligation, ObligationKey};
     use protocol::obligation_access::ObligationAccessStore;
 
@@ -182,6 +183,23 @@ module borrow_incentive::user {
     ) {
         abort 0
     }
+
+    public entry fun force_unstake_unhealthy_v3(
+        incentive_config: &IncentiveConfig,
+        incentive_pools: &mut IncentivePools,
+        incentive_accounts: &mut IncentiveAccounts,
+        protocol_version: &Version,
+        obligation: &mut Obligation,
+        market: &mut Market,
+        coin_decimals_registry: &CoinDecimalsRegistry,
+        x_oracle: &XOracle,
+        ve_sca_subs_table: &mut VeScaSubscriberTable,
+        ve_sca_subs_whitelist: &VeScaSubscriberWhitelist,
+        clock: &Clock,
+        ctx: &mut TxContext,
+    ) {
+        abort 0
+    }    
 
     public entry fun refresh_inactive_boost(
         incentive_config: &IncentiveConfig,
